@@ -2,7 +2,7 @@
 import './style.css';
 
 const form = document.querySelector('#add_score');
-const scoreListing = document.querySelector('#score_listing');
+const refresh = document.querySelector('#btnRefresh');
 
 const asyncPost = async () => {
     const pName = document.getElementById('player_name').value;
@@ -28,25 +28,30 @@ const asyncPost = async () => {
 };
 
 
-
-// const displayData = async () => {
-//     data.forEach(el => {
-//         scoreListing.innerHTML += `
-//         <li>${el.user}, ${el.score}</li>
-//         `;
-//     });
-// }
-
 const fetchData = async () => {
     fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/53JtqdHuzGVKECuyF7mz/scores/')
   .then(response => response.json())
-  .then(data => console.log(data, 'inside fetchData'));
+  .then(data => {
+    console.log(data.result);
+    let output = '';
+    data.result.forEach((el) => {
+        output += `
+        <li>name: ${el.user}, score: ${el.score}</li>
+        `;
+    });
+    document.querySelector('#score_listing').innerHTML = output;
+  });
 };
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     asyncPost();
-    fetchData();
-  });
+  })
 
+refresh.addEventListener('click', () => {
+    console.log('refresh clicked');
+    document.querySelector('#score_listing').innerHTML = ''
+});
 
+document.addEventListener('DOMContentLoaded', fetchData());
