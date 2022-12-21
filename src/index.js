@@ -1,51 +1,17 @@
-/* eslint-disable no-console */
 import './style.css';
+import fetchData from './modules/fetchData.js';
+import asyncPost from './modules/asyncPost.js';
 
 const form = document.querySelector('#add_score');
 const refresh = document.querySelector('#btnRefresh');
 
-const asyncPost = async () => {
-  const pName = document.getElementById('player_name').value;
-  const pScore = document.getElementById('player_score').value;
-  console.log(pName, pScore);
-  try {
-    const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/53JtqdHuzGVKECuyF7mz/scores/', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: pName,
-        score: pScore,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const fetchData = async () => {
-  fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/53JtqdHuzGVKECuyF7mz/scores/')
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.result);
-      let output = '';
-      data.result.forEach((el) => {
-        output += `
-        <li>name: ${el.user}, score: ${el.score}</li>
-        `;
-      });
-      document.querySelector('#score_listing').innerHTML = output;
-    });
-};
-
+// Submit listener to post user and score to API
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   asyncPost();
 });
 
+// Click listener to refresh data after new submit
 refresh.addEventListener('click', () => {
   fetchData();
 });
