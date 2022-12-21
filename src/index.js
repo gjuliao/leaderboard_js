@@ -47,8 +47,7 @@ form.addEventListener('submit', (e) => {
 });
 
 refresh.addEventListener('click', () => {
-  console.log('refresh clicked');
-  document.querySelector('#score_listing').innerHTML = '';
+  fetchData();
 });
 
 document.addEventListener('DOMContentLoaded', fetchData());
