@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/html" rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#">
     <script defer type="module" src="./index.js"></script>
     <title>Leaderboad</title>
     <link
@@ -25,23 +27,23 @@
   </head>
   <body>
     <div id="app">
-        <h1>Leaderboard</h1>
+        <h1 class="text-primary">Leaderboard</h1>
         <div id="main">
             <div id="scores">
                 <div class="title">
-                    <h3>Recent Scores</h3>
-                    <button id="btnRefresh" type="submit">Refresh</button>
+                    <h3 class="text-info my-auto">Recent Scores</h3>
+                    <button id="btnRefresh" type="submit" class="btn btn-info">Refresh</button>
                 </div>
-                <ul id="score_listing"></ul>
+                <ul class="list-group list-group-hover list-group-striped" id="score_listing"></ul>
             </div>
             <div id="input">
                 <div class="title">
-                    <h3>Add Your Scores</h3>
+                    <h3 class="text-info">Add Your Scores</h3>
                 </div>
                 <form id="add_score">
-                    <input type="text" id="player_name" placeholder="Add Your name" />
-                    <input type="text" id="player_score" placeholder="Add Your Score" />
-                    <button type="submit">Submit</button>
+                    <input type="text" id="player_name" placeholder="          Add Your name" />
+                    <input type="text" id="player_score" placeholder="         Add Your Score" />
+                    <button class="btn btn-info float-right" type="submit">Submit</button>
                 </form>
             </div>
         </div>

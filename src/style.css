@@ -20,7 +20,7 @@ body {
 }
 
 #scores {
-  width: 40%;
+  width: 60%;
   margin: 1em;
 }
 
@@ -34,6 +34,20 @@ body {
   padding: 0;
 }
 
+ul.list-group.list-group-striped li:nth-of-type(odd) {
+  background: lightgray;
+  border-radius: 25px;
+}
+
+ul.list-group.list-group-striped li:nth-of-type(even) {
+  background: rgb(237, 233, 233);
+  border-radius: 25px;
+}
+
+ul.list-group.list-group-hover li:hover {
+  background: white;
+}
+
 #scores li {
   margin-top: 1em;
 }
@@ -44,7 +58,7 @@ body {
 }
 
 #input {
-  width: 40%;
+  width: 35%;
   margin: 1em;
 }
 
@@ -54,9 +68,11 @@ body {
 }
 
 #input input {
-  width: 50%;
+  width: 90%;
   margin: 1em;
   display: block;
+  border-color: gray;
+  border-radius: 30px;
 }
 
 #input button {
